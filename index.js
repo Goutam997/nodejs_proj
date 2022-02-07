@@ -26,14 +26,15 @@ let os = require("os");
 const http = require("http");
 const port = 8000;
 const fs = require("fs");
-let datetime = new Date().toDateString();
+let folder = new Date().toDateString(),
+datetime = new Date().toString();
 
 http.createServer((req,res) => {
 
     res.writeHeader(200,{"Content-Type":"text/html"});
 
-    fs.writeFileSync(`${datetime}.txt`,datetime);
-    fs.readFile(`${datetime}.txt`, (err,data)=>{
+    fs.writeFileSync(`${folder}.txt`,datetime);
+    fs.readFile(`${folder}.txt`, (err,data)=>{
         res.write(data);
         res.end();
     })
